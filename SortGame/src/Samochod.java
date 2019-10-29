@@ -1,3 +1,5 @@
+import java.net.URL;
+
 import javax.swing.*;
 
 public class Samochod {
@@ -7,12 +9,16 @@ public class Samochod {
 	Samochod(String color){
 		this.color=color;
 		if(color=="Blue") {
-			this.icon=new ImageIcon("C:\\My Space\\Elcipse\\projects\\SortGame\\src\\images\\blue.jpg");
-			this.selectedicon=new ImageIcon("C:\\My Space\\Elcipse\\projects\\SortGame\\src\\images\\bluesel.jpg");
+			URL blueURL = getClass().getResource("/images/blue.jpg");
+			URL blueselURL = getClass().getResource("/images/bluesel.jpg");
+			this.icon=new ImageIcon(blueURL);
+			this.selectedicon=new ImageIcon(blueselURL);
 		}
 		if(color=="Red") {
-			this.icon=new ImageIcon("C:\\My Space\\Elcipse\\projects\\SortGame\\src\\images\\red.jpg");
-			this.selectedicon=new ImageIcon("C:\\My Space\\Elcipse\\projects\\SortGame\\src\\images\\redsel.jpg");
+			URL redURL = getClass().getResource("/images/red.jpg");
+			URL redselURL = getClass().getResource("/images/redsel.jpg");
+			this.icon=new ImageIcon(redURL);
+			this.selectedicon=new ImageIcon(redselURL);
 		}
 	}
 	void select() {
