@@ -3,4 +3,4 @@ When I studied at university, i wrote this code and decided to save this for the
 
 All folders are different programs.
 
-This is a simple GUI game in which you must sort random number of colors in table. Sort rule: all red items need to be placed at the bottom of table. At the end if you have a result which is better then other's results - your name and score will be placed in highscores list.
+SortGame is a simple GUI game in which you must sort random number of colors in table. Sort rule: all red items need to be placed at the bottom of table. At the end if you have a result which is better then other's results - your name and score will be placed in highscores list.
