@@ -1,4 +1,4 @@
-# old-java-examples-of-code
+# Projects description
 When I studied at university, i wrote this code and decided to save this for the future to remind me of something and see what mistakes I was doing during that time.
 
 All folders are different programs.
