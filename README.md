@@ -7,6 +7,8 @@ C# programs:
 
 1) WebApp - C# .NET web application, using EntityFramework and MySQL server. Allows user to add car rents to database.
 
+2) MvcMovie - MVC application without database connection. Allows user to add, edit, search movies.
+
 Java programs:
 
 1) Chat - just a regular chat. You can configure how many clients you want in Main.java. Nicknames and passwords are stored in Hasla.txt in project directory.
