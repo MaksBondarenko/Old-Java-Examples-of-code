@@ -3,6 +3,12 @@ When I studied at university, i wrote this code and decided to save this for the
 
 All folders are different programs.
 
+C# programs:
+
+1) WebApp - C# .NET web application, using EntityFramework and MySQL server. Allows user to add car rents to database.
+
+Java programs:
+
 1) Chat - just a regular chat. You can configure how many clients you want in Main.java. Nicknames and passwords are stored in Hasla.txt in project directory.
 
 2) MySQLApp is a program that loads information about books from MySQL local server and allows you to search books you need by title or part of title.
