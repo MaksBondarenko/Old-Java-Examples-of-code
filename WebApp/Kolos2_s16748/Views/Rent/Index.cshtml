@@ -1,0 +1,64 @@
+﻿@model Rent;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Wypożyczenie samochodów</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Client</th>
+            <th>Date from</th>
+            <th>Date To</th>
+            <th>Car</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rent in (IEnumerable<Rent>)ViewBag.Rents)
+        {
+            <tr>
+                <td>@rent.Description</td>
+                <td>@rent.Client</td>
+                <td>@rent.DateFrom.ToShortDateString()</td>
+                <td>@rent.DateTo.ToShortDateString()</td>
+                <td>@rent.Car.Model (@rent.Car.RegisterNumber)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Dodaj Wypożyczenie</h2>
+<form method="post" asp-action="Dodaj">
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Client"></label>
+        <input class="form-control" asp-for="Client" />
+        <span asp-validation-for="Client"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateFrom"></label>
+        <input class="form-control" asp-for="DateFrom" type="date" />
+        <span asp-validation-for="DateFrom" ></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateTo"></label>
+        <input class="form-control" asp-for="DateTo" type="date" />
+        <span asp-validation-for="DateTo"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Car"></label>
+        <select asp-for="IdCar" class="form-control" >
+                @foreach (Car c in ViewBag.Cars)
+                {
+                    <option value="@c.IdCar">@c.Model (@c.RegisterNumber)</option>
+                }
+        </select>
+        <span asp-validation-for="IdCar"></span>
+    </div>
+    <input type="submit" value="Dodaj" />
+</form>
