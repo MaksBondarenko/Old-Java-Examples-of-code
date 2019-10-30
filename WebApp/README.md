@@ -1,0 +1,1 @@
+You can change configuration in Startup.cs in .UseMySQL() method. Without any changes server ip set to localhost, port: 3306, database: cars, user: root, password: root.
