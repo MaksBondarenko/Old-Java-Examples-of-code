@@ -10,7 +10,7 @@ C# programs:
 
 Java programs:
 
-1) WeatherAndExchange - program uses weather API, currency exchange API and NBP web page to give user information about weather in selected cityand exchange rate between selected currencies.
+1) WeatherAndExchange - program uses weather API, currency exchange API and NBP web page to give user information about weather in selected city and exchange rate between selected currencies.
 
 1) Chat - just a regular chat. You can configure how many clients you want in Main.java. Nicknames and passwords are stored in Hasla.txt in project directory.
 
