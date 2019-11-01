@@ -1,0 +1,1 @@
+To use this change base path in .html files in html directory to absolute project path.
