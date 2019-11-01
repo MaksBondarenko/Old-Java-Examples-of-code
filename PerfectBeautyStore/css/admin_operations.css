@@ -1,0 +1,22 @@
+h1{
+  color: #857ACC;
+  margin-left: auto;
+}
+.szukaj{
+  width: 56.5%;
+}
+.content{
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.content button{
+  width: 350px;
+  height: 80px;
+  font-size: 30px;
+  margin: 2rem;
+}
+footer{
+  margin-top: 3rem;
+}
