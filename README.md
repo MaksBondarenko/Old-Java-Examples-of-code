@@ -10,6 +10,8 @@ C# programs:
 
 Java programs:
 
+1) WeatherAndExchange - program uses weather API, currency exchange API and NBP web page to give user information about weather in selected cityand exchange rate between selected currencies. To configure country's currency, currency and city use Main.java (will be updated in future to change exerything from GUI).
+
 1) Chat - just a regular chat. You can configure how many clients you want in Main.java. Nicknames and passwords are stored in Hasla.txt in project directory.
 
 2) MySQLApp is a program that loads information about books from MySQL local server and allows you to search books you need by title or part of title.
