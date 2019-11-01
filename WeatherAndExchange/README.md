@@ -1,0 +1,1 @@
+1) WeatherAndExchange - program uses weather API, currency exchange API and NBP web page to give user information about weather in selected cityand exchange rate between selected currencies. To configure country's name (for first currency), currency and city (for weather) use Main.java (will be updated in future to change exerything from GUI).
