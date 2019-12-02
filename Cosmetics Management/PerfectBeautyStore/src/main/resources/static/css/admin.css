@@ -1,0 +1,11 @@
+.loguj .nav-link{
+  padding: 1px;
+  align-self: flex-end;
+}
+.loguj{
+  display: flex;
+  flex-direction: column;
+}
+.loguj h2{
+  margin-bottom: 0;
+}

@@ -1,0 +1,23 @@
+#wyszukaj{
+  width: 300px;
+  margin-left: 12rem;
+}
+.cena-sort{
+  width: 800px;
+}
+.data-sort{
+  display: flex;
+  justify-content: flex-start;
+  background-color: #FFD9F2;
+  align-items: center;
+}
+.data-sort h5{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#data-od{
+  margin-left: 0.5rem;
+}
+#searchbar{
+  flex-direction: column;
+}

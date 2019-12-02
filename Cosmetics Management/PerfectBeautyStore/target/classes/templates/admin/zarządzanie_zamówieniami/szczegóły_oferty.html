@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/zarządzanie_ofertami/szczegóły.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+</head>
+<body>
+<nav class="navbar">
+  <div  id="div-logo">
+    <a class="navbar-brand" href="/">
+      <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+    </a>
+  </div>
+
+  <div id="nav-search">
+    <div class="szukaj">
+      <h1>Szczególowa informacja o ofercie</h1>
+    </div>
+    <div class="loguj">
+      <h2>admin</h2>
+      <a class="nav-link" href="/">admin operations</a>
+    </div>
+  </div>
+  <div>
+    <a onclick="window.history.back()">
+      <button>Zwróć</button>
+    </a>
+  </div>
+</nav>
+<div  class="content">
+  <img src="images/products/soda.jpg" width="200" height="150"/>
+  <div class="info">
+    <h5 th:text="'Nazwa: '+${product.nazwa}"></h5>
+    <h5 th:text="'Rodzaj: '+${product.rodzaj}"></h5>
+    <h5 th:text="'Podrodzaj: '+${product.podrodzaj}"></h5>
+    <h5 th:text="'Brend: '+${product.brend}"></h5>
+    <h5 th:text="'Ilość: '+${product.ilosc}"></h5>
+    <h5 th:text="'Cena: '+${product.cena}"></h5>
+    <h5 th:text="'Brutto: '+${product.brutto}"></h5>
+    <h5 th:text="'Id: '+${product.productid}"></h5>
+    <h5 th:text="'Opis: '+${product.opis}"></h5>
+  </div>
+</div>
+<footer class="footer">
+  <h3 class="p-3">Perfect beauty store 2019</h3>
+</footer>
+</body>
+</html>

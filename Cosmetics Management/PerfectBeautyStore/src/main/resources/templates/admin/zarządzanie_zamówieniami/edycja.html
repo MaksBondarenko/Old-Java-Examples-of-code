@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/zarządzanie_ofertami/edycja.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+  <link rel="stylesheet" type="text/css" href="css/edit_zamowienie.css">
+  <link rel="stylesheet" type="text/css" href="css/ladne_inputy.css">
+  <script src="javascript/validacja_zamowien.js"></script>
+  <script src="javascript/modal.js"></script>
+</head>
+<body th:onload="onBodyCreate()">
+  <nav class="navbar">
+    <div  id="div-logo">
+      <a class="navbar-brand" href="/">
+        <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+      </a>
+    </div>
+
+    <div id="nav-search">
+      <div class="szukaj" style="width: 65%;">
+        <h1>Szczególowa informacja o zamówieniu</h1>
+      </div>
+      <div class="loguj">
+        <h2>admin</h2>
+        <a class="nav-link" href="/">admin operations</a>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <form class="info" method="post" onsubmit="return validate()" name="input" th:action="@{/order_edited(id=${order.orderId})}">
+      <div id="dane-klienta">
+        <h5>Imię klienta:</h5>
+        <input type="text" th:name="imie" th:value="${order.ClientName}"/>
+        <label id="imie"></label>
+        <h5>Nazwisko klienta:</h5>
+        <input type="text" th:name="nazwisko" th:value="${order.ClientSurname}"/>
+        <label id="nazwisko"></label>
+        <h5>Numer mobilny klienta:</h5>
+        <input type="tel" th:name="phone" th:value="${order.PhoneNumber}"/>
+        <label id="phone"></label>
+        <h5>Adres e-mail klienta:</h5>
+        <input th:name="email" type="email" th:value="${order.Email}"/>
+        <label id="email"></label>
+        <h5>Data zamówienia:</h5>
+        <input th:name="date" type="date" th:value="${parsedDate}"/>
+        <label id="date"></label>
+        <h5>Miejsce dostarczania:</h5>
+        <input th:name="miejsce" type="text" th:value="${order.DeliveryPlace}"/>
+        <label id="miejsce"></label>
+        <h5>Status:</h5>
+        <select th:name="status">
+          <option th:selected="${status.equals(order.status)}" th:each="status : ${statuses}" th:value="${status}" th:text="${status}" value="1" ></option>
+        </select>
+        <label id="status"></label>
+      </div>
+      <div id="openModal" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Products</h3>
+              <button type="button" onclick="closeyslf(); sprawdz();" title="Close" class="close">X</button>
+            </div>
+            <div class="modal-body">
+              <table>
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Rodzaj</th>
+                  <th>Brend</th>
+                  <th>Cena</th>
+                  <th>Ilość</th>
+                  <th>Wartość</th>
+                  <th></th>
+                </tr>
+                <tr class="rowyow" th:each="product : ${allProducts}">
+                  <td th:text="${product.nazwa}"></td>
+                  <td th:text="${product.podrodzaj}"></td>
+                  <td th:text="${product.brend}"></td>
+                  <td class="prices" th:text="${product.cena}"></td>
+                  <td  style="flex-direction: row">
+                    <input th:each="p : ${order.productsInOrder.keySet()}" th:if="${product.productid==p.productid}" class="small2" type="number" name="ilosc" th:value="${order.productsInOrder.get(product)}"></input>
+                    <input th:each="p : ${order.productsInOrder.keySet()}" th:if="${product.productid!=p.productid}" class="small2" type="number" name="ilosc" disabled value="0"></input>
+                    <label class="maxCount" th:text="' z '+${product.ilosc}"></label>
+                  </td>
+                  <td ><label class="wart">0</label></td>
+                  <td >
+                    <input class="small" onclick="wydziel(this)" th:if="${product.ilosc<1}" disabled name="productid"  th:value="${product.productid}"   type="checkbox"/>
+                    <input class="small" onclick="wydziel(this)"  th:each="p : ${order.productsInOrder.keySet()}" th:checked="${product.productid==p.productid}"  th:if="${product.ilosc>=1}" name="productid" th:value="${product.productid}"   type="checkbox"/>
+                  </td><!--onclick="clickRefresh1(this)"-->
+                </tr>
+              </table>
+              <h3 style="margin-top: 2rem" id="wartosccala">Wartość zamówienia: 0 (zł)</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" id="dodaj" onclick="show()" >Edytuj produkty</button>
+      <div id="but">
+        <button type="submit">Zapisz zmiany</button>
+        <a onclick="return confirm('Czy chcesz anulować zmiany?')" class="nav-link" th:href="'order_details?orderId='+${order.orderId}">Anuluj zmiany</a>
+      </div>
+    </form>
+  </div>
+  <footer class="footer">
+    <h3 class="p-3">Perfect beauty store 2019</h3>
+  </footer>
+</body>
+</html>

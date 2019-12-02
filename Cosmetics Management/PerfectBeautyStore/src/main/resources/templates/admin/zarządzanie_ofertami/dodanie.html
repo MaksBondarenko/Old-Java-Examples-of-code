@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/zarządzanie_ofertami/edycja.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+  <link rel="stylesheet" type="text/css" href="css/js_forms.css">
+  <link rel="stylesheet" type="text/css" href="css/ladne_inputy.css">
+  <script src="javascript/validacja_ofert.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div  id="div-logo">
+      <a class="navbar-brand" href="/">
+        <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+      </a>
+    </div>
+
+    <div id="nav-search">
+      <div class="szukaj">
+      </div>
+      <div class="loguj">
+        <h2>admin</h2>
+        <a class="nav-link" href="/">admin operations</a>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <div id="zdjecie">
+      <div>
+      <img src="images/products/no_image.jpg" width="200" height="150"/>
+    </div>
+      <button>Wybierz zdjęcie</button>
+    </div>
+    <form class="info" method="post"  name="input" th:action="@{/save_product}" onsubmit="return validate()">
+
+      <h5>Nazwa:</h5>
+      <input th:name="nazwa" type="text"  th:value="${product.nazwa}"/>
+      <label id="nazwa"></label>
+      <h5>Rodzaj:</h5>
+      <input th:name="rodzaj" type="text" th:value="${product.rodzaj}"/>
+      <label id="rodzaj"></label>
+      <h5>Podrodzaj:</h5>
+      <input th:name="podrodzaj" type="text" th:value="${product.podrodzaj}"/>
+      <label id="podrodzaj"></label>
+      <h5>Brend:</h5>
+      <input th:name="brend" type="text" th:value="${product.brend}"/>
+      <label id="brend"></label>
+      <h5>Ilość:</h5>
+      <input th:name="ilosc" type="number" th:value="${product.ilosc}"/>
+      <label id="ilosc"></label>
+      <h5>Cena (zł):</h5>
+      <input th:name="cena" type="number" step="0.01" th:value="${product.cena}"/>
+      <label id="cena"></label>
+      <h5>Brutto (kg):</h5>
+      <input th:name="brutto" type="number" step="0.001" th:value="${product.brutto}"/>
+      <label id="brutto"></label>
+      <h5>Opis:</h5>
+      <textarea th:name="opis" type="text" th:text="${product.opis}"></textarea>
+      <button type="submit">Zapisz</button>
+      <a onclick="return confirm('Czy chcesz anulować tworzenie oferty?')" class="nav-link" href="tabela_ofert">Anuluj</a>
+    </form>
+  </div>
+  <footer class="footer">
+    <h3 class="p-3">Perfect beauty store 2019</h3>
+  </footer>
+</body>
+</html>

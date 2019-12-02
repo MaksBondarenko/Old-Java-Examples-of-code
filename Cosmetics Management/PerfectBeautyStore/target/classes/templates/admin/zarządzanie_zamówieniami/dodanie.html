@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/zarządzanie_ofertami/edycja.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+  <link rel="stylesheet" type="text/css" href="css/edit_zamowienie.css">
+  <link rel="stylesheet" type="text/css" href="css/ladne_inputy.css">
+  <script src="javascript/validacja_zamowien.js"></script>
+  <script src="javascript/modal.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->
+</head>
+<body>
+
+  <nav class="navbar">
+    <div  id="div-logo">
+      <a class="navbar-brand" href="/">
+        <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+      </a>
+    </div>
+
+    <div id="nav-search">
+      <div class="szukaj" style="width: 65%;">
+        <h1>Szczególowa informacja o zamówieniu</h1>
+      </div>
+      <div class="loguj">
+        <h2>admin</h2>
+        <a class="nav-link" href="/">admin operations</a>
+      </div>
+    </div>
+  </nav>
+  <div class="content">
+    <form class="info" onsubmit="return validate()" name="input" action="save_order">
+      <div id="dane-klienta">
+        <h5>Imię klienta:</h5>
+        <input type="text" th:name="imie"/>
+        <label id="imie"></label>
+        <h5>Nazwisko klienta:</h5>
+        <input type="text" th:name="nazwisko"/>
+        <label id="nazwisko"></label>
+        <h5>Numer mobilny klienta:</h5>
+        <input type="tel" th:name="phone" />
+        <label id="phone"></label>
+        <h5>Adres e-mail klienta:</h5>
+        <input th:name="email" type="email"/>
+        <label id="email"></label>
+        <h5>Data zamówienia:</h5>
+        <input th:name="date" type="date" />
+        <label id="date"></label>
+        <h5>Miejsce dostarczania:</h5>
+        <input th:name="miejsce" type="text"/>
+        <label id="miejsce"></label>
+        <h5>Status:</h5>
+        <select th:name="status">
+          <option value="" disabled selected>Wybierz</option>
+          <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}" value="1" ></option>
+        </select>
+        <label id="status"></label>
+      </div>
+        <div id="openModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Products</h3>
+                        <button type="button" onclick="closeyslf(); sprawdz();" title="Close" class="close">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <th>Nazwa</th>
+                                <th>Rodzaj</th>
+                                <th>Brend</th>
+                                <th>Cena</th>
+                                <th>Ilość</th>
+                                <th>Wartość</th>
+                                <th></th>
+                            </tr>
+                            <tr class="rowyow" th:each="product : ${allProducts}">
+                                <td th:text="${product.nazwa}"></td>
+                                <td th:text="${product.podrodzaj}"></td>
+                                <td th:text="${product.brend}"></td>
+                                <td class="prices" th:text="${product.cena}"></td>
+                                <td  style="flex-direction: row"> <input class="small2" type="number" name="ilosc" disabled value="0"></input><label class="maxCount" th:text="' z '+${product.ilosc}"></label></td>
+                                <td ><label class="wart">0</label></td>
+                                <td >
+                                    <input class="small" onclick="wydziel(this)" th:if="${product.ilosc<1}" disabled name="productid"  th:value="${product.productid}"   type="checkbox"/>
+                                    <input class="small" onclick="wydziel(this)" th:if="${product.ilosc>=1}" name="productid" th:value="${product.productid}"   type="checkbox"/>
+                                </td><!--onclick="clickRefresh1(this)"-->
+                            </tr>
+                        </table>
+                        <h3 style="margin-top: 2rem" id="wartosccala">Wartość zamówienia: 0 (zł)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <button type="button" id="dodaj" onclick="show()" >Edytuj produkty</button>
+      <div id="but">
+        <button type="submit">Zapisz</button>
+        <a onclick="return confirm('Czy chcesz anulować zmiany?')" class="nav-link" href="/tabela_zamowien">Anuluj</a>
+      </div>
+    </form>
+  </div>
+  <footer class="footer">
+    <h3 class="p-3">Perfect beauty store 2019</h3>
+  </footer>
+<!--<div id="executethis">Hm</div>-->
+<!--<script th:inline="javascript">-->
+<!--  /*<![CDATA[*/-->
+<!--  var clickRefresh1 = function (element) {-->
+<!--    var value = element.value;-->
+<!--    var allProducts = [[${allProducts}]];-->
+<!--    var selectedProducts = [[${selectedProducts}]];-->
+<!--    var product;-->
+<!--    for (i=0;i<allProducts.length;i++){-->
+<!--      if(allProducts[i].productid==value)-->
+<!--        product = allProducts[i];-->
+<!--    }-->
+<!--    if(element.checked){-->
+<!--      selectedProducts.push(product);-->
+<!--    }else{-->
+<!--      selectedProducts.remove(product);-->
+<!--    }-->
+
+<!--    console.log(selectedProducts);-->
+<!--    $("#executethis").attr("th:text", "${selectedProducts}");-->
+<!--    $( "#executethis" ).load(window.location.href + " #executethis" );-->
+<!--    $( "#produkty" ).load(window.location.href + " #produkty" );-->
+<!--  }-->
+
+
+<!--  /*]]>*/-->
+<!--</script>-->
+</body>
+</html>

@@ -1,0 +1,17 @@
+input{
+  grid-column: 2;
+}
+h5{
+  grid-column: 1;
+  margin: 0rem;
+}
+label{
+  justify-self: start;
+  grid-column: 2;
+  color: red;
+  align-self: start;
+}
+.info{
+  grid-row-gap: 0.5rem;
+  align-items: center;
+}

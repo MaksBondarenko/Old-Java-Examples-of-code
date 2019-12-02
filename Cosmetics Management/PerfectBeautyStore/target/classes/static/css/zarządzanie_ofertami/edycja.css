@@ -1,0 +1,47 @@
+h1{
+  color: #857ACC;
+  margin-left: auto;
+}
+.szukaj{
+  width: 63%;
+}
+.content{
+  padding: 5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+}
+.content button{
+  width: 150px;
+  font-size: 17px;
+}
+.content .nav-link{
+  width: 150px;
+  font-size: 17px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+}
+footer{
+  margin-top: 3rem;
+}
+.info{
+  margin-left: 2rem;
+}
+input{
+  width: 200px;
+}
+textarea{
+  width: 350px;
+  height: 100px;
+}
+.info{
+  display: grid;
+  text-align: right;
+  grid-template-columns: auto auto;
+}
+#zdjecie{
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/search.css">
+  <link rel="stylesheet" type="text/css" href="css/tabela_zamowien.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+  <link rel="stylesheet" type="text/css" href="css/ladne_inputy.css">
+  <script src="javascript/date_od_do.js"></script>
+  <script src="javascript/cena_od_do.js"></script>
+  <style>
+    .dodaj{
+      margin-bottom: 3rem;
+    }
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div  id="div-logo">
+      <a class="navbar-brand" href="/">
+        <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+      </a>
+    </div>
+    <form id="searchbar" action="tabela_zamowien">
+    <div id="nav-search">
+      <div class="szukaj">
+
+          <input name="keyword" th:value="${keyword}" class="form-control" id="wyszukaj" type="search" placeholder="Wyszukaj" aria-label="Search">
+          <button class="btn btn-outline-white" type="submit">Search</button>
+
+      </div>
+      <div class="loguj">
+        <h2>admin</h2>
+        <a class="nav-link" href="/">admin operations</a>
+      </div>
+    </div>
+    <div class="second-line-nav">
+      <div class="cena-page">
+        <div id="cena-valid" style="background-color: #FFD9F2;">
+        <div class="cena-sort">
+          <h5 class="ml-5 mr-2">Wartość zamówienia od:</h5>
+          <input id="od" th:value="${price_from}" class="form-control" name="price_from" type="number" min="0" step="0.01" placeholder="od">
+          <h5 class="ml-2 mr-2">-</h5>
+          <input id="do" th:value="${price_to}" class="form-control" name="price_to" type="number" min="0" step="0.01" placeholder="do">
+          <h5>(zł)</h5>
+          <h5 class="ml-4">Sortowanie:</h5>
+          <div class="box">
+            <select  name="sortowanie">
+              <option th:if="${sort == null}" value="" disabled selected>Wybierz</option>
+              <option th:if="${sort == null or sort != 1}" value="1">od najtańszych</option>
+              <option th:if="${sort != null and sort == 1 }" selected value="1">od najtańszych</option>
+              <option th:if="${sort == null or sort != 2}" value="2">od najdroższych</option>
+              <option th:if="${sort != null and sort == 2}" selected value="2">od najdroższych</option>
+              <option th:if="${sort == null or sort != 3}" value="3">od najnowszych</option>
+              <option th:if="${sort != null and sort == 3}" selected value="3">od najnowszych</option>
+              <option th:if="${sort == null or sort != 4}" value="4">od najstarszych</option>
+              <option th:if="${sort != null and sort == 4}" selected value="4">od najstarszych</option>
+            </select>
+          </div>
+        </div>
+        <label id="od-do" style="margin-left: 10rem; color: red;"></label>
+      </div>
+        <div id="date-valid" style="background-color: #FFD9F2;">
+        <div class="data-sort">
+          <h5 id="data-od">Data zamówienia od:</h5>
+          <input id="date-from" th:value="${date_from}" type="date" name="date_from">
+          <h5>-</h5>
+          <input id="date-to" th:value="${date_to}" type="date" name="date_to">
+        </div>
+        <label id="date-from-to" style="margin-left: 10rem; color: red;"></label>
+      </div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <a class="nav-link" th:href="@{tabela_zamowien(page=1,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+        Pierwsza strona
+      </a>
+      <a class="nav-link" th:if="${currentPage<3}" th:href="@{tabela_zamowien(page=1,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+        1
+      </a>
+      <a class="nav-link" th:if="${currentPage>=3}" th:text="${currentPage-1}" th:href="@{tabela_zamowien(page=currentPage-1,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+
+      </a>
+
+      <a class="nav-link disabled" th:if="${orderPage.totalPages<2}" disabled="disabled" >
+        2
+      </a>
+      <a class="nav-link" th:if="${orderPage.totalPages>=2 and currentPage==1}" th:href="@{tabela_zamowien(page=2,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+        2
+      </a>
+      <a class="nav-link" th:if="${orderPage.totalPages>=2 and currentPage>1}" th:text="${currentPage}" th:href="@{tabela_zamowien(page=${currentPage},date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+
+      </a>
+
+      <a class="nav-link disabled" th:if="${orderPage.totalPages<3}" disabled="disabled">
+        3
+      </a>
+      <a class="nav-link" th:if="${orderPage.totalPages>=3 and currentPage==1}" th:href="@{tabela_zamowien(page=3,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+        3
+      </a>
+      <a class="nav-link" th:text="${currentPage+1}" th:if="${orderPage.totalPages>=3 and currentPage>1 and (orderPage.totalPages>=currentPage+1)}" th:href="@{tabela_zamowien(page=currentPage+1,date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+
+      </a>
+      <a class="nav-link disabled" disabled="disabled" th:text="${currentPage+1}" th:if="${orderPage.totalPages>=3 and currentPage>1 and orderPage.totalPages<currentPage+1}">
+
+      </a>
+      <a class="nav-link" th:href="@{tabela_zamowien(page=${orderPage.totalPages},date_from=${date_from},,date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+        Ostatnia strona
+      </a>
+<!--      <form th:action="tabela_zamowien">-->
+        <input class="form-control col-2" th:name="page"  type="number" min="1" th:max="${orderPage.totalPages}"  th:placeholder="${currentPage}">
+        <h5>z</h5>
+        <h5 th:text="${orderPage.totalPages}"></h5>
+        <a  th:action="@{tabela_zamowien(date_from=${date_from},date_to=${date_to},price_from=${price_from},price_to=${price_to},sortowanie=${sort},keyword=${keyword})}">
+          <button class="btn btn-outline-white" >Ok</button>
+        </a>
+<!--      </form>-->
+    </div>
+    </form>
+  </nav>
+  <div class="content">
+    <a href="order_dodanie">
+      <button class="btn btn-outline-white col-3 dodaj" type="submit">Dodaj zamówienie</button>
+    </a>
+    <div th:if="${orderPage.size > 0}" th:each="zamowienie : ${orderPage.content}" class="oferta">
+      <img src="images/products/zam.jpg" width="200" height="150"/>
+      <div class="opis">
+        <h5 th:text="'Klient: '+${zamowienie.ClientName}+' '+${zamowienie.ClientSurname}"></h5>
+        <h5 th:text="'Data zamówienia: '+ ${zamowienie.ParsedDate}"></h5>
+        <h5 th:text="'Wartość zamówienia: '+${zamowienie.totalCost}"></h5>
+      </div>
+      <div class="zarzadzaj">
+        <a th:href="@{/order_details(orderId=${zamowienie.orderId})}">Zobacz więcej</a>
+        <a th:href="'order_edycja?id='+${zamowienie.orderId}">Edytuj</a>
+        <a onclick="return confirm('Czy chcesz usunąć zamówienie?')" th:href="'delete_order?id='+${zamowienie.orderId}+'&page='+${currentPage}">Usuń</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <h3 class="p-3">Perfect beauty store 2019</h3>
+  </footer>
+  <script>
+  document.getElementById('od').addEventListener("input",pressCena);
+  document.getElementById('do').addEventListener("input",pressCena);
+  document.getElementById('date-from').addEventListener("input",pressDate);
+  document.getElementById('date-to').addEventListener("input",pressDate);
+  //var date_input = new Date(document.getElementById('date').value);
+  //console.log(date_input);
+  </script>
+</body>
+</html>

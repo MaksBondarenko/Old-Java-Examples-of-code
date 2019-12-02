@@ -1,0 +1,224 @@
+.info{
+  display: flex;
+  flex-direction: column;
+}
+#dane-klienta{
+  display: grid;
+  text-align: left;
+  grid-template-columns: auto auto;
+  grid-row-gap: 1rem;
+  text-align: right;
+  align-items: center;
+}
+#dodaj{
+  margin-left: auto;
+}
+#but{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+select{
+  margin-left: initial;
+  background-color: white;
+  color: initial;
+  padding: initial;
+  box-shadow: initial;
+  -webkit-appearance: initial;
+  text-align: initial;
+  font-size: initial;
+  width: 300px;
+}
+select:hover{
+  color: initial;
+  background-color: lightgrey;
+}
+option{
+  background-color: white;
+  font-size: initial;
+}
+input{
+  width: 300px;
+}
+#produkty{
+  display: grid;
+  text-align: left;
+  grid-template-columns: auto auto auto auto auto;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#produkty input{
+  width: 100px;
+  text-align: right;
+}
+#produkty .nav-link{
+  grid-column: 2;
+}
+#dane-klienta label{
+  grid-column: 2;
+  justify-self: left;
+  color: red;
+}
+h5{
+  margin: 0rem;
+  margin-right: 1rem;
+}
+select{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.valid-ilosc{
+  grid-column: 3 / span 3;
+  color: red;
+}
+.modal {
+  position: fixed; /* фиксированное положение */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* цвет фона */
+  z-index: 1050;
+  opacity: 1; /* по умолчанию модальное окно прозрачно */
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in; /* анимация перехода */
+  /*pointer-events: none;  /*элемент невидим для событий мыши */
+  display: none;
+  overflow-y: auto;
+}
+.small{
+  width: 100%;
+  height: 100%;
+}
+.small2{
+  width: 3rem;
+  height: 100%;
+}
+th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #E763DC;
+  color: white;
+}
+td, th{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+table{
+  text-align: left;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+/* при отображении модального окно */
+.modal-show {
+  display: block;
+  opacity: 1;
+  /*pointer-events: auto;*/
+  overflow-y: auto;
+}
+
+/* ширина модального окна и его отступы от экрана */
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 750px;
+    margin: 30px auto;
+  }
+}
+
+/* свойства для блока, содержащего контент модального окна */
+.modal-content {
+  width: 750px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3rem;
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+}
+
+/* свойства для заголовка модального окна */
+.modal-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #eceeef;
+}
+
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* свойства для кнопки "Закрыть" */
+.close {
+  float: right;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  text-decoration: none;
+}
+
+/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+.close:focus, .close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .75;
+}
+
+/* свойства для блока, содержащего основное содержимое окна */
+.modal-body {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 15px;
+  overflow: auto;
+}

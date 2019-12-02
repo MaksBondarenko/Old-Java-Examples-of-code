@@ -1,0 +1,9 @@
+#dane-klienta label{
+  grid-column: 2;
+}
+#dane-klienta h5{
+  grid-column: 1;
+}
+#dane-klienta input{
+  grid-column: 2;
+}

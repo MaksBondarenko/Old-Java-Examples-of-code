@@ -1,0 +1,49 @@
+h1{
+  color: #857ACC;
+  margin-left: auto;
+}
+.szukaj{
+  width: 63%;
+}
+.content{
+  padding: 5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: center;
+}
+.content button{
+  width: 350px;
+  height: 80px;
+  font-size: 30px;
+  margin: 2rem;
+}
+footer{
+  margin-top: 3rem;
+}
+.info{
+  margin-left: 2rem;
+}
+.info h5{
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+.info label{
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 18px;
+  white-space: nowrap;
+}
+.info a{
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+#ed_us a{
+  margin-top: 2rem;
+  margin-right: 4rem;
+}
+#ed_us{
+  display: flex;
+  justify-content: center;
+}
+

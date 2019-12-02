@@ -1,0 +1,141 @@
+.vertical-menu{
+  text-align: center;
+  font-size: 25px;
+}
+.navbar{
+  position: relative;
+}
+.nav-link{
+  color:#857ACC;
+  display: block;
+  background-color:#FFD9F2;
+  text-decoration: none;
+  background-color: #fccaeb;
+  color: white;
+  padding: 12px;
+  border: none;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 17px;
+}
+.nav-link:hover{
+  background-color: #FFBFE5;
+  color: #857ACC;
+}
+.vertical-menu{
+    width: 200px;
+}
+#div-logo{
+  display: flex;
+  background-color:#FFD9F2;
+  justify-content: center;
+}
+body{
+  background-color:#F2EBFF;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+#nav-search{
+  background-color:#FFD9F2;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button:hover{
+  background-color: #FFBFE5;
+  color: #857ACC;
+}
+#nav-search button{
+  background-color: #fccaeb;
+  margin-left: 1rem;
+}
+.loguj{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 3rem;
+}
+.szukaj{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+}
+#nav-search a{
+  background-color: #fccaeb;
+  margin-left: 1rem;
+}
+#wyszukaj{
+  margin-left: 3rem;
+}
+#nav-search h2{
+  color: #857ACC;
+  background-color: #FFBFE5;
+  font-weight: bold;
+  text-align: center;
+  width: 200px;
+}
+.dropdown-menu{
+  border-right: none;
+   border-left: none;
+   border-bottom: none;
+   border-top: none;
+   background-color: inherit;
+}
+.loguj .nav-link{
+  padding: 4px;
+}
+footer{
+  background-color: #FFD9F2;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  color: #857ACC;
+}
+option{
+  background-color: #fccaeb;
+  font-size: 17px;
+}
+select {
+  margin-left: 1rem;
+  background-color: #fccaeb;
+  color: white;
+  padding: 12px;
+  border: none;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  text-align: center;
+  font-size: 17px;
+}
+button{
+  background-color: #fccaeb;
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 17px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+select:hover{
+  color: #857ACC;
+  background-color: #FFBFE4;
+}
+input{
+  height: 40px;
+  font-size: 17px;
+}
+form{
+  display: flex;
+  flex-direction: row;
+}
+button:disabled{
+  background-color: #fcd9f1;
+  color: white;
+}
+.navbar-brand{
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+

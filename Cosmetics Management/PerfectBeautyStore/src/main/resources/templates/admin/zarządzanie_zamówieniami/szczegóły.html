@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Perfect Beauty Store</title>
+  <meta charset="utf-8">
+  <base href="../../..">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+  <link rel="stylesheet" type="text/css" href="css/zarządzanie_ofertami/szczegóły.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+  <style>
+  li{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  #Wartość{
+    justify-content: flex-end;
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div  id="div-logo">
+      <a class="navbar-brand" href="/">
+        <img src="images/logo/logo2.png" width="1000" height="120" class="center-block" alt="logo">
+      </a>
+    </div>
+
+    <div id="nav-search">
+      <div class="szukaj" style="width: 65%;">
+        <h1>Szczególowa informacja o zamówieniu</h1>
+      </div>
+      <div class="loguj">
+        <h2>admin</h2>
+        <a class="nav-link" href="/">admin operations</a>
+      </div>
+    </div>
+    <div>
+      <form action="tabela_zamowien">
+        <button>Zwróć do zamówień</button>
+      </form>
+    </div>
+  </nav>
+  <div class="content">
+    <div class="info">
+      <h5 th:text="'Imię klienta: '+${order.ClientName}"></h5>
+      <h5 th:text="'Nazwisko klienta: '+${order.ClientSurname}"></h5>
+      <h5 th:text="'Numer mobilny klienta: '+${order.PhoneNumber}"></h5>
+      <h5 th:text="'Adres e-mail klienta: '+${order.Email}"></h5>
+      <h5 th:text="'Data zamówienia: '+${order.ParsedDate}"></h5>
+      <h5 th:text="'Miejsce dostarczania: '+${order.DeliveryPlace}"></h5>
+      <h5 th:text="'Status: '+${order.Status}"></h5>
+      <h5 th:text="'Id: '+${order.orderId}"></h5>
+      <h5>Produkty w zawówieniu:</h5>
+<!--      <div  id="produkty" >-->
+<!--        <label ></label>-->
+<!--        <input disabled value="Change by JS"/>-->
+<!--        <input type="number" name="ilosc" value="2"/>-->
+<!--        <a href="html/admin/zarządzanie_zamówieniami/szczegóły_oferty.html">Zobacz więcej</a>-->
+<!--        <a onclick="return confirm('Czy chcesz usunąć produkt z zamówienia?')" href="html/admin/zarządzanie_zamówieniami/edycja.html">Usuń</a>-->
+<!--        <label id="ilosc" class="valid-ilosc"></label>-->
+<!--        <label id="Wartość">Wartość zamówienia:</label>-->
+<!--        <input disabled value="Change by JS"></input>-->
+<!--      </div>-->
+      <ul th:each=" product : ${order.productsInOrder.keySet()}">
+        <li >
+          <label th:text="${product.podrodzaj}+' '+${product.nazwa}+', cena: '+${product.cena}+' (zł) x '+${order.productsInOrder.get(product)}+' = '+${order.productsInOrder.get(product)*product.cena}+' (zł)'"></label>
+          <a th:href="'zobacz_wiecej?id='+${product.productid}">Zobacz więcej</a>
+        </li>
+      </ul>
+      <label th:text="'Wartość zamówienia: '+${order.totalCost}+' (zł)'" id="Wartość"></label>
+      <div id="ed_us">
+        <a th:href="'order_edycja?id='+${order.orderId}">Edytuj</a>
+        <a onclick="return confirm('Czy chcesz usunąć zamówienie?')" th:href="'delete_order?id='+${order.orderId}">Usuń</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <h3 class="p-3">Perfect beauty store 2019</h3>
+  </footer>
+</body>
+</html>
