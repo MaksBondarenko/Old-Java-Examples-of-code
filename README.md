@@ -4,7 +4,7 @@ All folders are different programs.
 
 Java programs:
 
-1) Cosmetics manager (Java) - Spring Boot CRUD application (thymeleaf templates). Allows user to manage products and orders. 
+1) Cosmetics manager (Java) - Spring Boot CRUD application (thymeleaf templates). Allows user to manage products and orders. Includes paginating, sorting, searching and many to many relationship. (Database connection will be added)
 
 2) WeatherAndExchange - program uses weather API, currency exchange API and NBP web page to give user information about weather in selected city and exchange rate between selected currencies.
 
